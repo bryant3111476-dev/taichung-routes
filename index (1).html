@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>臺中市物資運送路線</title>
+<style>
+*{box-sizing:border-box}html{font-family:"Microsoft JhengHei","PingFang TC",sans-serif;color:#183f41;background:#f3f6f5}body{margin:0;overflow-x:hidden}button,input,select,a{font:inherit}button,select{cursor:pointer}button{color:inherit}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:3px solid #dba83a;outline-offset:3px}[hidden]{display:none!important}
+.app{max-width:1280px;margin:auto;padding:22px}.heading{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}h1{font-size:26px;margin:0 0 8px}p{line-height:1.6}.subtitle{font-size:13px;color:#647b7b;margin:0}.badge{white-space:nowrap;padding:8px 12px;background:#e4eeea;border-radius:8px;font-size:13px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:16px;align-items:start}.card{min-width:0;background:white;border:1px solid #dce6e4;border-radius:14px;overflow:hidden}.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px}h2{font-size:17px;margin:0}.tabs{display:flex;gap:4px}.tabs button,.tool{border:1px solid #d3dfda;background:white;border-radius:7px;padding:8px 10px;font-size:13px}.tabs button[aria-pressed="true"],.tool:hover{background:#e5efea}.map{position:relative;height:470px;margin:0 10px;border-radius:8px;background:#f7faf8;overflow:hidden}.map>svg{display:block;width:100%;height:100%}.district{cursor:pointer;outline:none}.district path{stroke:white;stroke-width:1.8;stroke-linejoin:round;vector-effect:non-scaling-stroke;fill-rule:evenodd}.district:hover path,.district:focus-visible path{fill:#94beac;stroke:#427c66}.district[aria-pressed="true"] path{fill:#296459;stroke:#d7a13c}.district text{text-anchor:middle;dominant-baseline:central;font-size:14px;font-weight:bold;fill:#24483f;pointer-events:none;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}.district[aria-pressed="true"] text{fill:white;stroke:#296459}.core text{display:none}.city-mode .district text{font-size:5px;stroke-width:1.2px}.city-mode .core text{display:block}.city-mode .inset,.city-mode .sea{display:none}.sea{fill:#99aaa4;font-size:14px;letter-spacing:4px}.inset{position:absolute;right:10px;bottom:10px;width:155px;height:170px;background:#fffffff2;border:1px solid #c8d9cf;border-radius:9px;padding:8px}.inset strong{font-size:11px}.inset svg{display:block;width:100%;height:135px}.inset .core text{display:block;font-size:5px;stroke-width:1px}.caption{padding:12px 16px;color:#647b7b;font-size:12px}.index{padding:16px}.index h2{margin-bottom:12px}.search{width:100%;padding:11px 12px;border:1px solid #d3dfda;border-radius:7px;min-width:0;font-size:16px}.group h3{font-size:12px;color:#768c80;margin:16px 0 8px}.buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.pick{border:1px solid #dde6df;border-radius:6px;background:#f9fbf9;padding:10px 2px;font-size:13px;min-height:40px}.pick:hover,.pick[aria-pressed="true"]{background:#286459;color:#fff}.quick{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-size:13px}.quick select{flex:1;min-width:0;border:1px solid #cddbd2;border-radius:7px;background:white;padding:10px;font-size:16px}.note{font-size:11px;color:#788b83;line-height:1.7;margin:14px 0 0}.note a{color:inherit}
+.overlay{position:fixed;inset:0;z-index:9999;background:#12312acc;padding:10px;display:flex;align-items:flex-start;justify-content:center}.viewer{display:flex;flex-direction:column;width:100%;max-width:1320px;height:calc(100vh - 20px);height:calc(100dvh - 20px);max-height:860px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 12px 50px #0004}.viewer-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-bottom:1px solid #dce6e4;flex-shrink:0}.viewer h2{font-size:20px;line-height:1.4}.close{font-size:24px;line-height:1;padding:6px 12px}.toolbar{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:10px 12px;background:#f7faf8;flex-shrink:0}.tools{display:flex;align-items:center;flex-wrap:wrap;gap:6px}.tools a{text-decoration:none;color:inherit}.tools output{min-width:42px;text-align:center;font-size:12px}.viewport{position:relative;min-height:0;flex:1;overflow:auto;background:#e7eeea;overscroll-behavior:contain;touch-action:pan-x pan-y pinch-zoom}.space{display:grid;place-items:center;min-width:100%;min-height:100%;padding:16px}.route-image{display:block;max-width:none;user-select:none;-webkit-user-drag:none}.message{position:absolute;inset:20px;display:flex;align-items:center;justify-content:center;text-align:center;color:#647b7b;font-size:14px;line-height:1.8;padding:20px}.viewer-footer{padding:9px 14px;color:#647b7b;font-size:11px;line-height:1.5;flex-shrink:0}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}button:disabled{opacity:.4;cursor:default}
+@media(max-width:850px){.app{padding:16px}.layout{grid-template-columns:1fr}.map{height:clamp(250px,56vw,440px)}.buttons{grid-template-columns:repeat(4,minmax(0,1fr))}.inset{width:125px;height:145px}.inset svg{height:110px}}
+@media(max-width:480px){.app{padding:12px}h1{font-size:21px}.badge{display:none}.subtitle{font-size:12px}.card-head{padding:12px}.card-head h2{font-size:15px}.tabs button{font-size:12px;padding:7px 9px}.map{margin:0 6px;height:250px}.inset{display:none}.index{padding:14px}.pick{font-size:13px}.viewer-head{padding:10px}.viewer h2{font-size:17px}.overlay{padding:5px}.viewer{height:calc(100vh - 10px);height:calc(100dvh - 10px);border-radius:8px}.tool{font-size:12px;padding:8px}.toolbar{padding:8px}.viewer-footer{font-size:10px}}
+</style>
+</head>
+<body>
+<main class="app" id="app">
+  <header class="heading"><div><h1>臺中市物資運送路線</h1><p class="subtitle">點選行政區，查看對應的物資運送路線圖。</p></div><span class="badge">29 個行政區</span></header>
+  <div class="quick"><label for="district-select">快速選區</label><select id="district-select"><option value="">請選擇行政區</option></select></div>
+  <div class="layout">
+    <section class="card" aria-labelledby="map-heading">
+      <header class="card-head"><h2 id="map-heading">行政區總覽</h2><div class="tabs"><button type="button" id="all-view" aria-pressed="true">全市</button><button type="button" id="city-view" aria-pressed="false">市中心</button></div></header>
+      <div class="map" id="map-stage">
+        <svg id="district-map" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="臺中市行政區互動地圖"><text class="sea" x="85" y="300" transform="rotate(-62 85 300)">臺灣海峽</text></svg>
+        <aside class="inset"><strong>市中心五區放大圖</strong><svg id="inset-map" viewBox="208 309 74 80" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="市中心五區"></svg></aside>
+      </div>
+      <div class="caption" id="selection" aria-live="polite">小區域可切換「市中心」，或使用行政區索引。</div>
+    </section>
+    <nav class="card index" aria-label="行政區路線圖索引"><h2>行政區索引</h2><label class="sr" for="search">搜尋行政區</label><input class="search" id="search" type="search" placeholder="搜尋行政區…" autocomplete="off"><div id="district-list"></div><p id="no-results" class="note" hidden>找不到相符的行政區。</p></nav>
+  </div>
+  <footer class="note">行政區界為簡化導覽圖；運送路線與設施名稱以各區圖面為準。<a href="https://services1.arcgis.com/XgbJTM2lwaBqFO3f/ArcGIS/rest/services/Taichung_GIS_01/FeatureServer/0" target="_blank" rel="noopener noreferrer">行政區界資料</a></footer>
+  <noscript>請啟用 JavaScript，以使用地圖與路線圖檢視功能。</noscript>
+</main>
+<div class="overlay" id="overlay" hidden>
+  <section class="viewer" role="dialog" aria-modal="true" aria-labelledby="route-title" aria-describedby="viewer-help" tabindex="-1">
+    <header class="viewer-head"><h2 id="route-title">物資運送路線</h2><button type="button" class="tool close" id="close" aria-label="關閉路線圖">×</button></header>
+    <div class="toolbar"><div class="tools"><button type="button" class="tool" id="previous" aria-label="上一區">←</button><span id="counter" class="note" style="margin:0"></span><button type="button" class="tool" id="next" aria-label="下一區">→</button></div><div class="tools"><button type="button" class="tool zoom" id="minus" aria-label="縮小">−</button><output id="zoom">100%</output><button type="button" class="tool zoom" id="plus" aria-label="放大">＋</button><button type="button" class="tool zoom" id="fit">符合視窗</button><a class="tool" id="original" target="_blank" rel="noopener noreferrer" hidden>開啟原圖 ↗</a></div></div>
+    <div class="viewport" id="viewport"><div class="space" id="space"><img class="route-image" id="route-image" alt="" draggable="false" hidden></div><div class="message" id="message" role="status">正在載入路線圖…</div></div>
+    <footer class="viewer-footer" id="viewer-help">使用 ＋／− 縮放，放大後可捲動或拖曳；Esc 關閉，← → 切換行政區。</footer>
+  </section>
+</div>
+<script>
+(function(){
+'use strict';
+/* ===== 圖片設定：2026-10-27 已修正 =====
+   29 張圖片實際存放在公開 GitHub 儲存庫 taichung-routes 的「根目錄」，
+   而不是 images 子資料夾。直接使用可公開顯示圖片的 GitHub raw 網址，
+   不需另外開啟 GitHub Pages，亦可在 Google Sites 中載入。
+   若未來將圖片移到子資料夾，請同步修改以下路徑。
+*/
+const IMAGE_BASE_URL = 'https://raw.githubusercontent.com/bryant3111476-dev/taichung-routes/main/';
+/* 如圖片分散存放，可在此逐區填入公開 JPG／PNG／WebP 直連。
+   個別設定優先於 IMAGE_BASE_URL。空白則使用資料夾中的原始檔名。 */
+const IMAGE_URLS = {
+  '中區':'','東區':'','南區':'','西區':'','北區':'',
+  '西屯區':'','南屯區':'','北屯區':'',
+  '大甲區':'','大安區':'','外埔區':'','清水區':'',
+  '梧棲區':'','沙鹿區':'','龍井區':'','大肚區':'',
+  '豐原區':'','后里區':'','神岡區':'','大雅區':'','潭子區':'',
+  '石岡區':'','東勢區':'','新社區':'','和平區':'',
+  '烏日區':'','大里區':'','太平區':'','霧峰區':''
+};
+/* 行政區導覽界線，沿用原檔資料；以小型編碼保存座標。 */
+const GEO = [
+["中區",245,344,"DuwDpgUEBgACBAQEAQAMBwQPDwQDAAAEAwACAgECAQ=="],
+["東區",262,352,"KIYEngUMAgEEAggGAQIDCgECAAACAgAABgAAAwoABgEEAAQBAgEGBQoNAAUCBwEDAgEEAQEAAwIJBQsIAwALAAUIAQABAgEBAQABAAECAgABBAA="],
+["南區",229,367,"MvYDzgUBCAIGAQYHAgcABwQAAgIGAQIBAQEBBwABAgMEAAYFAgACAQACBQ0AAAMAAwsEBAcAAQIBAAEAAAADAwEBAgABBgMCAgADAgEIAQADAgMADQwGAgYCAAACAgAAACANBgoABA=="],
+["西區",232,347,"MdQDlgUDBAQCAgACAAIABAAAAgIAAAIEAgMIAgABAAEEEhIdDgAAAQAAAAEAAAEBAAEFCwUACQABAAcFAAAEAQAABQIAAAMEAAALAAECAAIBAAAICwQBAgABAgIEAgACAgEEBAI="],
+["北區",246,328,"PuoD/gQMAAACBgAAAgIEAQIAAhQECgIBAgEGAwgLAQMAAAIBAQACAAICAgECAAIHAgAGAwIDAwABBQUBBAABAwQAAAMEAQECAwIAAQAEBQAAAAEAAQMAAAEBAAABAwABAAEAAQADAQQDAwECAwEBAQABAwQDAgUCCwwBDAIBCg=="],
+["西屯區",193,304,"JNwCogRAFAAEBgMMAAoLGAYADAsYABgKAAILAAgKBAkaDxAHAQcGEwADCw0MJxULBBMHAAcFAgEFFA8LBwIDDAQGBxEHDBcCEQoA"],
+["南屯區",202,350,"HMIC+AQACAwGFAEmFhALBAwUAAgFBAQADgUEAAYIAwEqKx4BAw8BARUhCwkNBwMFAhcXAAsGAAwdBgE="],
+["北屯區",328,297,"M/YEmAQWAggKHAgUDAgOBxwKGg8IIQULEBEGBwEJBwkGIQYjDQMCAgYdBQAJEQECCRcABgcJAwAHAQwJAAAXDBcwCQAEDAIFFAoCAQgKAgITBAMMGgIHEAACAwgCBgcGAgYPFgUDCwwP"],
+["大甲區",195,75,"L44DXgYMDgoGDAIMCAwcDgwWEAoBBhYUBgwaDAAIKQcBCDEHDw4JEgsABRIPAA8KCSAZAg8PFBcFCwoFBAoCDQ4DCxEIAQMFCgECExAHAgUeBAkRRSskKwYEBQUMEw4E"],
+["大安區",160,130,"KeoCrAEsHAoSHQMBBgsCBRoJAgQGBwIMEg0EAQ4DCQkGBgwTGAsRMwMMAA0FHiUHAQgBAgcDAA4JAwEGAAQHAQEGDQoDAAkEBwQCAwMEAAIRCg0aEA=="],
+["外埔區",234,148,"GcQD+AEuCAIHPgwBHAQCBwYADhcBAQoVChsMJwIAEAkQKR0ZAwofEAkQAAYRCgIKCwIHFA0="],
+["清水區",150,192,"DZADrAMABBgABQ4PBAQEFwAXDQwbAAsGBxYAAiQmtgGEAxgAAwQNAQEGBAMECAEFBgYCAwIEHAMBCAMDAAQRAgYSCx4FBQoTCQkdSgYSBwEFCQcDAwwbCw4GDiMJBQgCChkKBA4fCQUHDxgEQpoCtAIaABwiNAAmHAQEBwQJGgYIAQQQBAcMFwABJxUABQgADAscHQANAwEGCQgFAQEIFQIpDQAJFQ8BCxIBAAMEBAIHGwQBAwEEBQUCBgMHAwQCBQ4CBAMHAw8GJQ0mDBANChEAAwkFEAEaEAoAAwMIDwkHCQAAAxoDBQkIAQUBBAADBRoE"],
+["梧棲區",109,245,"FsQBvgMECAwdAwUWEAAKMA4DCgUBAxIGAhMeARYfBwMEGQsCBxEFBQ8eSQoKBxI="],
+["沙鹿區",150,262,"H84CuAMSAgADHhAYAA8SARYLCBMFE0QLGBcHCwQDAQMNEQUADQUHBwACFxQdBQEEEQYCBAkQAQIHBgIKBwIFFAQ="],
+["龍井區",110,289,"KJwB8gMGChoGAwgcDAQDKAoGCAAOEgYEDhYBJBAFCAsDAQQMCBEOFwMADBcFBwQVAhsNFwAPGyELChkFCAUAKxMOBg0HBAUACAoCEi8WCgQLCAQElAGiBAEIBgcDAA=="],
+["大肚區",127,343,"GeAB8AQOChYBCAMYBgALGAQCCg0cBQAADBgYAQgECAcMBgwJEA8CKQkPExEJDxUGExc3JgQ="],
+["豐原區",301,237,"J8oEmAM2BAgOAQwMBgUYDAgCCgsEAQgKCgAWBQQGBh8DBQMXBwkMCQAJBQMPCQAAAwMCAAsJAgkYBwMEEQEHAwEGEwoLEAEJFQIJBgEAEyIC"],
+["后里區",293,177,"GcQEigJENgkGAQoKCAEWCgoHEBkGAQ53By0NFQ8KDwAPKAEcCxYJAgkYAgANCAUDAQIbEgY="],
+["神岡區",248,223,"IfADkgM4BAAUBQIBCgoWDwIJDAUUBgQBCgsIAwEECREGAA8NDgITJxEREgcDBAcJEwkFEgMMGQ8DAgMFBwwbBgEWECwM"],
+["大雅區",207,263,"IJYDxgMQFgMICAQSESgSARQODQEIBAQJCAcWCgIBCgUIBQAFDgUCAAsXBQkMCwAFBBsNHwcDAwkCEjEUBgwHAhUQEQ=="],
+["潭子區",284,281,"LKYE9gMCCgQBAAQKAAQQCgYKAAoLHAwJEAQMFQYFEAUBBQgHAQEEDwABCAsZAwQBFAkBAgcJAQYTCwEAAxEGEwECCQYABgcCCQkBCBUYCwEODgUADAgEChcIAA=="],
+["石岡區",337,214,"FpwFlAM+ChIiCigJBBcrGw8WIgEQDwMLDQMSBwkDEgMBAwsLBwYXCwUCCwcNHAc="],
+["東勢區",402,225,"MooFwgIiDigGFBAQFhQOJAIkDTgGIRoCBgcACxQGDgMEABIGAgUSEBIBChYGBRQECgkICQELBAIKCRgPDAMIBhYPChkDERsHHQIRDVsJIw8fPwsjCg0BAg0eCQILBwsECwsPAgkMAw=="],
+["新社區",359,262,"RLoFsgMaDhgsCgMKPAQ4ChwKEAoGEgQQCxoFGAICFhUDABICEgoBDAIDHAIOBAALBgYKBRoJBAsWAwsIGQ8ZGQAJDw0ADQ4LEwYHARMHBQkEBwkJBgUJDQEGFQ8pBAsAFwkJKQ8FBwgABQUGAwARCQ0CBxIABBEICgQRDA4QBAIPAwsFAgMFBw8CAA=="],
+["和平區",806,163,"vgGQDWQEEgcmBBAKBAwQCAUWARIKCgwFCAQOCAgQAgoFBAkUCQwEMAkIAAgUCgMIFAcKCwIFDgMKBAoJGAQQCwoHEiEAAxgLEAkBExQKHgAUDQQJAQkECxANAAASERYdEQsCCwURAgUFDRAXAQULDQMHDxEGEygLBgsHAAMDAg8HFQ4VAQcMEQoZGQsUFwQLGgkIMQMNBgsKERwHAh0YBwANEgcLEQQHFAUBAxMPAhMWDygNBAAIBQYFAxMIBQcTABMNHx4XCg8BCQsPAwIDAwADGQYPCwEJAgERABEWBAEVEwEbBgUVBAcQCwoXAQkMAwoCCgcDCQYTFQUCCQ8RBhEFAQARBAMFDRIZFAsABRgLEg8HQyINDAgaAAgICgQeBQYICgYWBRQYCBIUDggOHAIMGxIJCAAIBwEHEAEIDgoBIBkMBgwDBBMIAwQNEhUOBCYFCg8BBxIPDgEMEwAJEgEGBAogHgcGGxAPABsMCQ4BAhcAEBQEAgNABRYREAw="],
+["烏日區",202,394,"MMgCugUSEiIMAhYQAgIEFA8MAQUSDAMACA4AABAKBBEMCQIIFAMIBBQOCAEEBgYDDAQOBwEADgsFAwQMFAcECwsAEA8JFQAIDQkbBAkAFwkHBQ0HLSsHCwUKDwcHCg8DDwgB"],
+["大里區",253,392,"H5oE1AUFHBYCBwwkFBIBBgYBDgUGAQURDicDDwgPEAcBExUTAQkFBAMNBxgNCQMCBwMACAUECQ4CAAkYBQgLHgE="],
+["太平區",342,377,"NM4F/AQGEAUWDgIGCgoFCAoKAwgGAhQFCAwUDR4ECgcIAiwRCAcDBQgFAhUyBwUFEwcACw8RBxUTKw0IBwIGBgcADxUAIxMICxUBABMOFwYXAwcRCAEHChEBCSgOIgUKBRAKFAUMDyIGEAc="],
+["霧峰區",296,444,"MMQDogYDBAgGFgISFggCCAMKCxQJJAYGBRwGFAgWFBQKCg4IAgYSCAYHCgAKCQIDChcUAAoXBhUQGRUXABcIEwMdDR8XExcCBwwGAA0IAgMNBAsFBQIDDQcDEwQHBwsACxIM"]
+];
+const GROUPS = [
+  ['市區',['中區','東區','南區','西區','北區','西屯區','南屯區','北屯區']],
+  ['海線',['大甲區','大安區','外埔區','清水區','梧棲區','沙鹿區','龍井區','大肚區']],
+  ['山線',['豐原區','后里區','神岡區','大雅區','潭子區','石岡區','東勢區','新社區','和平區']],
+  ['屯區',['烏日區','大里區','太平區','霧峰區']]
+];
+const $ = id => document.getElementById(id);
+const names = GEO.map(row => row[0]);
+const core = new Set(['中區','東區','南區','西區','北區']);
+const svgNS = 'http://www.w3.org/2000/svg';
+const overlay = $('overlay'), viewport = $('viewport');
+let image = $('route-image');
+let current = -1, token = 0, scale = 1, fitted = true, ready = false;
+let opener = null, scrollBefore = '', drag = null, pending = null;
+function svgNode(tag, attrs){
+  const el = document.createElementNS(svgNS, tag);
+  Object.entries(attrs).forEach(([key,value]) => el.setAttribute(key,value));
+  return el;
+}
+function decodeBoundary(encoded){
+  const bytes = atob(encoded); let offset = 0, path = '';
+  function read(){
+    let value = 0, shift = 0, byte;
+    do{byte = bytes.charCodeAt(offset++);value |= (byte&127)<<shift;shift += 7;}while(byte&128);
+    return value;
+  }
+  function delta(){const value = read();return (value>>>1)^-(value&1);}
+  while(offset<bytes.length){
+    const count = read(); let x = 0, y = 0;
+    for(let i=0;i<count;i++){x += delta();y += delta();path += (i?' ':'M')+x+','+y;}
+    path += 'Z';
+  }
+  return path;
+}
+function drawMap(target, onlyCore){
+  GEO.forEach(([name,x,y,encoded],index) => {
+    if(onlyCore && !core.has(name)) return;
+    const group = svgNode('g',{class:'district'+(core.has(name)?' core':''),role:'button',tabindex:'0','data-name':name,'aria-label':name+'：查看物資運送路線','aria-pressed':'false'});
+    const title = svgNode('title',{}); title.textContent = name;
+    const path = svgNode('path',{d:decodeBoundary(encoded),fill:['#c7ddd1','#dae7cb','#c9dfda','#dce8d5'][index%4]});
+    const text = svgNode('text',{x,y}); text.textContent = name;
+    group.append(title,path,text);
+    group.addEventListener('click',() => openRoute(name,group));
+    group.addEventListener('keydown',event => {
+      if(event.key==='Enter'||event.key===' '){event.preventDefault();openRoute(name,group);}
+    });
+    target.append(group);
+  });
+}
+drawMap($('district-map'),false); drawMap($('inset-map'),true);
+GROUPS.forEach(([heading,items]) => {
+  const section = document.createElement('section'); section.className = 'group';
+  const title = document.createElement('h3'); title.textContent = heading+' · '+items.length+' 區';
+  const buttons = document.createElement('div'); buttons.className = 'buttons';
+  items.forEach(name => {
+    const button = document.createElement('button'); button.type = 'button';
+    button.className = 'pick'; button.dataset.name = name;
+    button.textContent = name; button.setAttribute('aria-pressed','false');
+    button.addEventListener('click',() => openRoute(name,button)); buttons.append(button);
+    const option = document.createElement('option'); option.value = name; option.textContent = name;
+    $('district-select').append(option);
+  });
+  section.append(title,buttons); $('district-list').append(section);
+});
+function setView(city){
+  $('district-map').setAttribute('viewBox',city?'130 245 250 190':'0 0 1000 560');
+  $('map-stage').classList.toggle('city-mode',city);
+  $('all-view').setAttribute('aria-pressed',String(!city));
+  $('city-view').setAttribute('aria-pressed',String(city));
+}
+$('all-view').onclick = () => setView(false); $('city-view').onclick = () => setView(true);
+$('district-select').onchange = event => {
+  if(names.includes(event.target.value)) openRoute(event.target.value,event.target);
+};
+$('search').oninput = function(){
+  const query = this.value.trim().replace(/^(臺中市|台中市)/,''); let total = 0;
+  document.querySelectorAll('.group').forEach(section => {
+    let count = 0;
+    section.querySelectorAll('.pick').forEach(button => {
+      button.hidden = !button.dataset.name.includes(query); if(!button.hidden) count++;
+    });
+    section.hidden = count===0; total += count;
+  });
+  $('no-results').hidden = total!==0;
+};
+function titleFor(name){return (name.length>2?name.slice(0,-1):name)+'物資運送路線';}
+function sourceFor(name){
+  const custom = IMAGE_URLS[name].trim();
+  const base = IMAGE_BASE_URL.trim();
+  if(!custom&&!base) return '';
+  const raw = custom || base.replace(/\/?$/,'/')+encodeURIComponent(titleFor(name)+'.jpg');
+  try{
+    const url = new URL(raw,document.baseURI);
+    return (url.protocol==='https:'||url.protocol==='http:'||url.protocol==='file:')?url.href:'';
+  }catch(error){return '';}
+}
+function showMessage(text){$('message').textContent = text;$('message').hidden = false;}
+function setReady(value){
+  ready = value; document.querySelectorAll('.zoom').forEach(button => button.disabled = !value);
+}
+function openRoute(name,trigger){
+  if(!names.includes(name)) return;
+  if(overlay.hidden){
+    opener = trigger || document.activeElement;
+    scrollBefore = document.body.style.overflow;
+    overlay.hidden = false; document.body.style.overflow = 'hidden';
+    $('app').inert = true; $('close').focus();
+  }
+  current = names.indexOf(name); const request = ++token;
+  if(pending){pending.onload = null; pending.onerror = null; pending = null;}
+  setReady(false); fitted = true; drag = null; image.hidden = true; image.removeAttribute('src');
+  $('zoom').textContent = '—'; $('space').style.width = ''; $('space').style.height = '';
+  $('route-title').textContent = titleFor(name); image.alt = titleFor(name);
+  $('counter').textContent = (current+1)+' / '+names.length;
+  $('selection').textContent = '已選取：'+name; $('district-select').value = name;
+  document.querySelectorAll('[data-name]').forEach(el => el.setAttribute('aria-pressed',String(el.dataset.name===name)));
+  const src = sourceFor(name); $('original').hidden = !src;
+  if(!src){$('original').removeAttribute('href');showMessage('本區路線圖尚未提供。');return;}
+  $('original').href = src; showMessage('正在載入路線圖…');
+  const loader = new Image(); pending = loader;
+  loader.id = 'route-image'; loader.className = 'route-image';
+  loader.alt = titleFor(name); loader.draggable = false;
+  loader.onload = function(){
+    if(request!==token||overlay.hidden) return;
+    image.replaceWith(loader); image = loader; image.hidden = false; $('message').hidden = true;
+    setReady(true); pending = null; requestAnimationFrame(fitImage);
+  };
+  loader.onerror = function(){
+    if(request!==token||overlay.hidden) return;
+    pending = null; showMessage('路線圖無法載入，請稍後重試，或點選「開啟原圖」。');
+  };
+  loader.src = src;
+}
+function closeViewer(){
+  token++; if(pending){pending.onload = null;pending.onerror = null;pending = null;}
+  overlay.hidden = true; document.body.style.overflow = scrollBefore;
+  $('app').inert = false; drag = null;
+  if(opener&&opener.isConnected) opener.focus({preventScroll:true});
+}
+$('close').onclick = closeViewer;
+overlay.addEventListener('click',event => {if(event.target===overlay) closeViewer();});
+function step(delta){if(current>=0) openRoute(names[(current+delta+names.length)%names.length]);}
+$('previous').onclick = () => step(-1); $('next').onclick = () => step(1);
+function fitScale(){return Math.max(.01,Math.min((viewport.clientWidth-32)/image.naturalWidth,(viewport.clientHeight-32)/image.naturalHeight,1));}
+function resizeImage(next,center){
+  if(!ready||!image.naturalWidth) return;
+  const oldW = $('space').offsetWidth, oldH = $('space').offsetHeight;
+  const x = (viewport.scrollLeft+viewport.clientWidth/2)/oldW;
+  const y = (viewport.scrollTop+viewport.clientHeight/2)/oldH;
+  scale = Math.max(fitScale()*.5,Math.min(next,4));
+  const width = Math.round(image.naturalWidth*scale), height = Math.round(image.naturalHeight*scale);
+  image.style.width = width+'px'; image.style.height = height+'px';
+  $('space').style.width = (width+32)+'px'; $('space').style.height = (height+32)+'px';
+  $('zoom').textContent = Math.round(scale*100)+'%';
+  if(center){viewport.scrollLeft = x*$('space').offsetWidth-viewport.clientWidth/2;viewport.scrollTop = y*$('space').offsetHeight-viewport.clientHeight/2;}
+}
+function fitImage(){if(!ready) return;fitted = true;resizeImage(fitScale(),false);viewport.scrollLeft = 0;viewport.scrollTop = 0;}
+$('fit').onclick = fitImage;
+$('plus').onclick = () => {fitted = false;resizeImage(scale*1.4,true);};
+$('minus').onclick = () => {fitted = false;resizeImage(scale/1.4,true);};
+let resizeFrame;
+window.addEventListener('resize',() => {
+  cancelAnimationFrame(resizeFrame);resizeFrame = requestAnimationFrame(() => {
+    if(!overlay.hidden&&ready){if(fitted) fitImage();else resizeImage(scale,true);}
+  });
+});
+document.addEventListener('keydown',event => {
+  if(overlay.hidden) return;
+  if(event.key==='Escape'){event.preventDefault();closeViewer();return;}
+  if(event.key==='ArrowLeft'){event.preventDefault();step(-1);}
+  if(event.key==='ArrowRight'){event.preventDefault();step(1);}
+  if(event.key==='Tab'){
+    const focusable = [...overlay.querySelectorAll('button:not(:disabled),a[href]')].filter(el => !el.hidden);
+    const first = focusable[0], last = focusable[focusable.length-1];
+    if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+    else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+  }
+});
+viewport.addEventListener('pointerdown',event => {
+  if(event.pointerType!=='mouse'||event.button!==0||!ready) return;
+  drag = {id:event.pointerId,x:event.clientX,y:event.clientY,left:viewport.scrollLeft,top:viewport.scrollTop};
+  viewport.setPointerCapture(event.pointerId);event.preventDefault();
+});
+viewport.addEventListener('pointermove',event => {
+  if(drag&&event.pointerId===drag.id){viewport.scrollLeft = drag.left+drag.x-event.clientX;viewport.scrollTop = drag.top+drag.y-event.clientY;}
+});
+['pointerup','pointercancel','lostpointercapture'].forEach(type => viewport.addEventListener(type,() => {drag = null;}));
+})();
+</script>
+</body>
+</html>
